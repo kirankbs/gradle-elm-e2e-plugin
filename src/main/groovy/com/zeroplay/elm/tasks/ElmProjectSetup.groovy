@@ -13,19 +13,25 @@ class ElmProjectSetup extends BaseTask{
     @TaskAction
     def setUp(){
         createSourceDirectory(project.extensions.elm.source_directory);
+        createMainSourceModule(project.extensions.elm.source_directory+"/"+project.extensions.elm.mainModule);
         createTestDirectory(project.extensions.elm.test_directory);
         installAllPackages(project.configurations.elm.dependencies.collect());
     }
 
     def createSourceDirectory(String src_dir){
-        println(src_dir);
         if(! new File(src_dir).exists())
             new File(src_dir).mkdirs()
     }
 
+    def createMainSourceModule(String mainModule){
+        if(! new File(mainModule) != null )
+            new File(mainModule).createNewFile();
+    }
+
     def createTestDirectory(String test_dir){
+        println(test_dir)
         if(! new File(test_dir).exists())
-            new File(test_dir)
+            new File(test_dir).mkdirs()
     }
 
     def installAllPackages(List<Dependency> elmPackages){
