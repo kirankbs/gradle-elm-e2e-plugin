@@ -1,2 +1,2 @@
-# gradle-elm-e2e-plugin
+# gradle Elm End To End Plugin
 Gradle Plugin For Elm e2e Support
