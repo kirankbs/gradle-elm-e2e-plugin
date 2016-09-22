@@ -1,5 +1,6 @@
 package com.zeroplay.elm
 
+import com.zeroplay.elm.tasks.ElmInstallPackages
 import com.zeroplay.elm.tasks.ElmProjectBuildTask
 import com.zeroplay.elm.tasks.ElmProjectSetup
 import org.gradle.api.Plugin
@@ -19,7 +20,8 @@ class ElmPlugin implements Plugin<Project>{
         }
 
         project.task('buildElm', type: ElmProjectBuildTask );
-        project.task('installElmPackages', type: ElmProjectSetup );
+        project.task('installElmPackages', type: ElmInstallPackages)
+        project.task('setupElm', type: ElmProjectSetup, dependsOn: 'installElmPackages');
         //project.task('elmReactor')
     }
 }
