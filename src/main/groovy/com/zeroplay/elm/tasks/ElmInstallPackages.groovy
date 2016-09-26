@@ -10,14 +10,14 @@ class ElmInstallPackages extends BaseTask{
 
 
     @TaskAction
-    def installPackages(){
+    def setUp(){
         installPackage("");
         project.configurations.elm.dependencies.collect().each {
             installPackage(it.group+"/"+it.name);
         }
     }
 
-    private def installPackage(String elmPackage){
+    def installPackage(String elmPackage){
         ProcessBuilder pBuilder = new ProcessBuilder(Arrays.asList("elm","package","install",elmPackage,"--yes"));
         pBuilder.redirectErrorStream(true);
 

@@ -17,7 +17,7 @@ type Msg =
 --INIT
 initialModel : (Model, Cmd Msg)
 initialModel =
-    {message = "Welcom To ELM Basic Application"} ! []
+    {message = "Welcome To ELM Basic Application"} ! []
 
 --UPDATE
 update : Msg -> Model -> (Model, Cmd Msg)

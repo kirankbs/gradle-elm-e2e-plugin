@@ -20,8 +20,8 @@ class ElmPlugin implements Plugin<Project>{
         }
 
         project.task('buildElm', type: ElmProjectBuildTask );
-        project.task('installElmPackages', type: ElmInstallPackages)
+        project.task('installElmPackages', type: ElmInstallPackages);
         project.task('setupElm', type: ElmProjectSetup, dependsOn: 'installElmPackages');
-        //project.task('elmReactor')
+        project.task('elmReactor',type: ElmReactorTask)
     }
 }
